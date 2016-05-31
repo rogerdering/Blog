@@ -1,0 +1,13 @@
+doctype html
+html
+	head
+		script(src="https://code.jquery.com/jquery-2.2.0.min.js")
+	body
+		a(href='/profile') Go back
+		br
+		a(href='/post') Post something
+		h2 Blog posts
+		div
+			each post in posts
+				p= post.title
+				p= post.body

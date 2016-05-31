@@ -1,0 +1,13 @@
+doctype html
+html
+	head
+		script(src="https://code.jquery.com/jquery-2.2.0.min.js")
+	body
+		form(action='/register' method='post')
+			label username
+			input#username(name='username' required)
+			label email
+			input#email(name='email' required)
+			label password
+			input#password(name='password' required)
+			input(type='submit' value='register' id='submit')
