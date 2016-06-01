@@ -18,11 +18,13 @@ var User = sequelize.define('user', {
 });
 
 var Post = sequelize.define('post', {
+	author: Sequelize.STRING,
 	title: Sequelize.TEXT,
 	body: Sequelize.TEXT
 })
 
 var Comment = sequelize.define('comment', {
+	author: Sequelize.STRING,
 	title: Sequelize.TEXT,
 	body: Sequelize.TEXT
 })
@@ -116,6 +118,7 @@ app.post('/post', function (request, response) {
 		} 
 	}).then(function (user) {
 		user.createPost({
+			author: request.session.user.username,
 			title: request.body.title,
 			body: request.body.body
 		});
@@ -172,6 +175,7 @@ app.get('/post', function (request, response) {
 app.post('/comment', function (request, response) {
 	var comment = Comment.build({
 		postId: request.session.post.id,
+		author: request.session.user.username,
 		title: request.body.title,
 		body: request.body.body
 	})

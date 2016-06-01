@@ -4,11 +4,15 @@ html
 		script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
 	body
 		h1= post.title
-		h3= post.title
+		h2= post.body
+		h2 posted by
+		h2= post.author
 		div
 			each comment in comments
-				h2= comment.title
+				h3= comment.title
 				p= comment.body
+				p posted by:
+				p= comment.author
 				
 		h2 Write a comment
 		div

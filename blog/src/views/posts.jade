@@ -11,6 +11,8 @@ html
 			each post in posts
 				h3= post.title
 				p= post.body
+				p posted by:
+				p= post.author
 		h2 Find a post
 		form(action='/search' method='post')
 				label post
