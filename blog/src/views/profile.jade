@@ -3,8 +3,8 @@ html
 	head
 		script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
 	body
-		h2= user.name
-		h3= user.email
+		h1= user.name
+		h2= user.email
 
 		a(href='/all') view all posts
 		br
@@ -12,7 +12,7 @@ html
 		br
 		a(href='/logout') log out
 		br
-		h2 Post a message
+		h2 Post something
 		div
 			form(action='/post',method='post')
 				div(data-role='fieldcontain')

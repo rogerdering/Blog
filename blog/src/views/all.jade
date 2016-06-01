@@ -5,15 +5,28 @@ html
 	body
 		a(href='/profile') Go back
 		br
-		a(href='/post') Post something
-		br
 		h1 Blog posts
 		div
 			each post in posts
 				h3= post.title
-				p= post.body
+				h4= post.body
+				p posted by:
+				p= post.author
 		h2 Find a post
 		form(action='/search' method='post')
 				label post
 				input#title(name='title' required)
-				input(type='submit' value='login' id='submit')
+				input(type='submit' value='search' id='submit')
+		h2 Post something
+		div
+			form(action='/post',method='post')
+				div(data-role='fieldcontain')
+					fieldset(data-role='controlgroup')
+						label(for='title') Title: 
+							input(id='title',type='text',value='',placeholder='',name='title')
+				div(data-role='fieldcontain')
+					fieldset(data-role='controlgroup')
+						label(for='body') Body: 
+							input(id='body',type='text',value='',placeholder='',name='body')
+				div(data-role='fieldcontain')   
+					input(type='submit',value='Add',data-transition='fade', data-theme='c')

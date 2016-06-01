@@ -5,12 +5,12 @@ html
 	body
 		h1= post.title
 		h2= post.body
-		h2 posted by
-		h2= post.author
+		h3 posted by
+		h3= post.author
 		div
 			each comment in comments
-				h3= comment.title
-				p= comment.body
+				h4= comment.title
+				h5= comment.body
 				p posted by:
 				p= comment.author
 				
