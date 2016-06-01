@@ -6,10 +6,10 @@ html
 		a(href='/post') Post something
 		br
 		a(href='/profile') Go back
-		h2 Your posts
+		h1 Your posts
 		div
 			each post in posts
-				p= post.title
+				h3= post.title
 				p= post.body
 		h2 Find a post
 		form(action='/search' method='post')

@@ -23,11 +23,13 @@ html
 		else
 			a(href='/register') make an account
 			br
-			form(action='/login' method='post')
-				label email
-				input#email(name='email' required)
-				label password
-				input#password(name='password' required)
-				input(type='submit' value='login' id='submit')
+			h2 Login
+			div
+				form(action='/login' method='post')
+					label email
+					input#email(name='email' required)
+					label password
+					input#password(name='password' required)
+					input(type='submit' value='login' id='submit')
 
 		h2#error-message= message
