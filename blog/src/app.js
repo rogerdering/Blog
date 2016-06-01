@@ -3,7 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-var sequelize = new Sequelize('blog', 'postgres', 1234, {
+var sequelize = new Sequelize('blog', process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD, {
 	host: 'localhost',
 	dialect: 'postgres',
 	define: {
