@@ -110,8 +110,7 @@ app.post('/login', function (request, response) {
 	});
 });
 
-app.post('/post', function (request, response) {
-
+app.post('/posts', function (request, response) {
 	User.findOne({ 
 		where: {
 			id: request.session.user.id
@@ -126,63 +125,50 @@ app.post('/post', function (request, response) {
 	response.redirect('/profile')
 })
 
-app.get('/all', function (request, response) {
+app.get('/posts', function (request, response) {
 	Post.findAll({ 
 	}).then(function (posts) {
-		response.render('all', { 
+		response.render('posts/index', { 
 			posts: posts
 		}) 
 	})
 });
 
-app.get('/posts', function (request, response) {
+app.get('/posts/user', function (request, response) {
 	Post.findAll({ 
 		where: {
 			userId: request.session.user.id
 		} 
 	}).then(function (posts) {
-		response.render('posts', { 
+		response.render('posts/user', { 
 			posts: posts
 		}) 
 	})
 });
 
-app.post('/search', function (request, response) {
-	Post.findOne({
+app.get('/posts/:id', function (request, response) {
+	Post.findOne({ 
 		where: {
-			title: request.body.title
-		}
-	}).then(function (post) {
-		request.session.post = post;
-		response.redirect('/post');
-	});
-})
-
-app.get('/post', function (request, response) {
-	var post = request.session.post;
-	Comment.findAll({
-		where: {
-			postId: request.session.post.id
-		}
-	}).then(function(comments) {
-		response.render('post', {
-			post: post,
-			comments: comments
+			id: request.params.id
+		},
+		include: [Comment]
+	}).then(function(values) {
+		response.render('posts/show', {
+			post: values
 		})
 	})
-});
+})
 
 app.post('/comment', function (request, response) {
 	var comment = Comment.build({
-		postId: request.session.post.id,
+		postId: request.body.postId,
 		author: request.session.user.username,
 		title: request.body.title,
 		body: request.body.body
 	})
-
 	comment.save().then(function() {
 	})
-	response.redirect('/post')
+	response.send('thank you for commenting!')
 })
 
 app.get('/logout', function (request, response) {

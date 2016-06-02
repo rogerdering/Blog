@@ -6,15 +6,15 @@ html
 		h1= user.name
 		h2= user.email
 
-		a(href='/all') view all posts
+		a(href='/posts') view all posts
 		br
-		a(href='/posts') view your posts
+		a(href='/posts/user') view your posts
 		br
 		a(href='/logout') log out
 		br
 		h2 Post something
 		div
-			form(action='/post',method='post')
+			form(action='/posts',method='post')
 				div(data-role='fieldcontain')
 					fieldset(data-role='controlgroup')
 						label(for='title') Title: 

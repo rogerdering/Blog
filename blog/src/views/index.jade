@@ -15,9 +15,9 @@ html
 		if user
 			a(href='/profile') view profile
 			br
-			a(href='/posts') look at your posts
+			a(href='/posts/user') look at your posts
 			br
-			a(href='/all') look at all posts
+			a(href='/posts') look at all posts
 			br
 			a(href='/logout') log out
 		else
@@ -26,10 +26,10 @@ html
 			h2 Login
 			div
 				form(action='/login' method='post')
-					label email
+					label email: 
 					input#email(name='email' required)
-					label password
-					input#password(name='password' required)
+					label password: 
+					input#password(name='password',type='password' required)
 					input(type='submit' value='login' id='submit')
 
 		h2#error-message= message
