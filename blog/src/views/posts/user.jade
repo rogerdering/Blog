@@ -1,0 +1,27 @@
+doctype html
+html
+	head
+		script(src="https://code.jquery.com/jquery-2.2.0.min.js")
+	body
+		a(href='/profile') Go back
+		h1 Your posts
+		div
+			each post in posts
+				h3= post.title 
+				p written by:
+				p= post.author
+				a(href='/posts/#{post.id}') Read
+		h2 Post something
+		div
+			form(action='/posts',method='post')
+				div(data-role='fieldcontain')
+					fieldset(data-role='controlgroup')
+						label(for='title') Title: 
+							input(id='title',type='text',value='',placeholder='',name='title')
+				div(data-role='fieldcontain')
+					fieldset(data-role='controlgroup')
+						label(for='body') Body: 
+							input(id='body',type='text',value='',placeholder='',name='body')
+				div(data-role='fieldcontain')   
+					input(type='submit',value='Add',data-transition='fade', data-theme='c')
+
